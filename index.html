@@ -53,6 +53,7 @@
             funcional: '#3b82f6',
             trail: '#22c55e',
             fuerza: '#f97316',
+            cross: '#a855f7',
             descanso: '#6b7280',
           }
         }
@@ -178,15 +179,96 @@
           ]
         }]
       },
+      crossA: {
+        name: 'Cross Sesion 1 — Potencia + Pliometria',
+        duration: '25-30 min',
+        blocks: [
+          {
+            name: 'Calentamiento',
+            time: '5 min',
+            exercises: [
+              { id: 'ca1', name: 'Saltar soga', detail: '2 min', timer: 120 },
+              { id: 'ca2', name: 'Sentadillas sin peso', detail: '10 reps' },
+              { id: 'ca3', name: 'Skipping bajo en el lugar', detail: '10 reps' },
+              { id: 'ca4', name: 'Saltos verticales suaves', detail: '5 reps' },
+            ]
+          },
+          {
+            name: 'Principal',
+            time: '15 min',
+            exercises: [
+              { id: 'cap1', name: 'Broad jump (salto largo adelante)', detail: '4 x 5', clave: 'POTENCIA' },
+              { id: 'cap2', name: 'Sentadilla con salto maximo', detail: '4 x 6' },
+              { id: 'cap3', name: 'Split jump (estocada con salto)', detail: '4 x 8 (4 por lado)' },
+              { id: 'cap4', name: 'Skater jump (salto lateral)', detail: '4 x 10 — 90 seg entre rondas', timer: 90 },
+            ]
+          },
+          {
+            name: 'Finisher',
+            time: '5 min',
+            exercises: [
+              { id: 'caf1', name: 'Soga (dobles o simples rapidos)', detail: '3 x 20 dobles / 40 simples — 30 seg desc', timer: 30 },
+              { id: 'caf2', name: 'Burpees con salto', detail: '3 x 5 — 30 seg desc', timer: 30 },
+            ]
+          },
+          {
+            name: 'Cierre',
+            time: '2 min',
+            exercises: [
+              { id: 'cac1', name: 'Caminata + estiramiento', detail: '2 min', timer: 120 },
+            ]
+          },
+        ]
+      },
+      crossB: {
+        name: 'Cross Sesion 2 — HIIT Metabolico',
+        duration: '25-30 min',
+        blocks: [
+          {
+            name: 'Calentamiento',
+            time: '5 min',
+            exercises: [
+              { id: 'cb1', name: 'Saltar soga', detail: '2 min', timer: 120 },
+              { id: 'cb2', name: 'Sentadillas + push-ups + mountain climbers', detail: '10 + 5 + 10' },
+              { id: 'cb3', name: 'Burpees suaves', detail: '5 reps' },
+            ]
+          },
+          {
+            name: 'Principal — EMOM 20 min (4 rondas de 5 min)',
+            time: '20 min',
+            exercises: [
+              { id: 'cbp1', name: 'Min 1: Burpees con salto', detail: '10 reps — resto del minuto descanso', clave: 'EMOM' },
+              { id: 'cbp2', name: 'Min 2: Sentadilla con salto', detail: '15 reps — resto del minuto descanso' },
+              { id: 'cbp3', name: 'Min 3: Mountain climbers rapidos', detail: '40 reps (20 por pierna) — resto del minuto descanso' },
+              { id: 'cbp4', name: 'Min 4: Soga', detail: '60 simples / 30 dobles — resto del minuto descanso' },
+              { id: 'cbp5', name: 'Min 5: Descanso activo', detail: 'Caminar / respirar', timer: 60 },
+            ]
+          },
+          {
+            name: 'Finisher Tabata (opcional)',
+            time: '4 min',
+            exercises: [
+              { id: 'cbf1', name: 'Tabata: elegir 1 (skater / burpee / squat jump)', detail: '8 x (20 seg on / 10 seg off)', timer: 20 },
+            ]
+          },
+          {
+            name: 'Cierre',
+            time: '2 min',
+            exercises: [
+              { id: 'cbc1', name: 'Caminata + estiramiento', detail: '2 min', timer: 120 },
+            ]
+          },
+        ]
+      },
     };
 
     const DAYS_CONFIG = [
       { key: 'lun', label: 'Lunes', type: 'fuerza', typeName: 'Protocolo + Fuerza', protocols: ['diario', 'fuerzaCasa'] },
-      { key: 'mar', label: 'Martes', type: 'funcional', typeName: 'Protocolo', protocols: ['diario'] },
+      { key: 'mar', label: 'Martes', type: 'cross', typeName: 'Protocolo + Cross 1', protocols: ['diario', 'crossA'] },
       { key: 'mie', label: 'Miercoles', type: 'fuerza', typeName: 'Protocolo + Fuerza', protocols: ['diario', 'fuerzaCasa'] },
       { key: 'jue', label: 'Jueves', type: 'funcional', typeName: 'Protocolo', protocols: ['diario'] },
       { key: 'vie', label: 'Viernes', type: 'fuerza', typeName: 'Protocolo + Fuerza', protocols: ['diario', 'fuerzaCasa'] },
-      { key: 'sab', label: 'Sabado', type: 'fuerza', typeName: 'Protocolo + Fuerza', protocols: ['diario', 'fuerzaCasa'] },
+      { key: 'sab', label: 'Sabado', type: 'cross', typeName: 'Protocolo + Fuerza + Cross 2', protocols: ['diario', 'fuerzaCasa', 'crossB'] },
       { key: 'dom', label: 'Domingo', type: 'descanso', typeName: 'A eleccion', protocols: ['diario'] },
     ];
 
@@ -194,6 +276,7 @@
       funcional: { bg: 'bg-funcional/10', border: 'border-funcional/30', text: 'text-funcional', dot: 'bg-funcional', ring: 'ring-funcional/30' },
       trail: { bg: 'bg-trail/10', border: 'border-trail/30', text: 'text-trail', dot: 'bg-trail', ring: 'ring-trail/30' },
       fuerza: { bg: 'bg-fuerza/10', border: 'border-fuerza/30', text: 'text-fuerza', dot: 'bg-fuerza', ring: 'ring-fuerza/30' },
+      cross: { bg: 'bg-cross/10', border: 'border-cross/30', text: 'text-cross', dot: 'bg-cross', ring: 'ring-cross/30' },
       descanso: { bg: 'bg-descanso/10', border: 'border-descanso/30', text: 'text-descanso', dot: 'bg-descanso', ring: 'ring-descanso/30' },
       mixed: { bg: 'bg-fuerza/10', border: 'border-fuerza/30', text: 'text-fuerza', dot: 'bg-fuerza', ring: 'ring-fuerza/30' },
     };
@@ -602,6 +685,8 @@
     const PROTOCOL_CATALOG = [
       { key: 'diario', icon: '01', color: 'funcional', desc: 'Protocolo completo — Respiracion, movilidad, postura y nervio tibial' },
       { key: 'fuerzaCasa', icon: '02', color: 'fuerza', desc: 'Fuerza estructural — Hip thrust, RDL, dominadas' },
+      { key: 'crossA', icon: '03', color: 'cross', desc: 'Cross Sesion 1 — Potencia + Pliometria (sugerido martes)' },
+      { key: 'crossB', icon: '04', color: 'cross', desc: 'Cross Sesion 2 — HIIT Metabolico EMOM (sugerido sabado)' },
     ];
 
     // ─── PROTOCOL DETAIL (FREE / STANDALONE) ────────────────────────────
